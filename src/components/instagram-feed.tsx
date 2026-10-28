@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { reveal } from "@/lib/motion";
 import { contact, external, instagramPosts } from "@/lib/site";
 import { ButtonLink } from "./button-link";
 import { InstagramIcon } from "./icons";
@@ -10,17 +11,20 @@ export function InstagramFeed() {
     <section id="instagram" aria-labelledby="instagram-titulo" className="bg-ivory">
       <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
         <SectionTitle id="instagram-titulo" script="siga no" title="instagram" />
-        <p className="mx-auto mt-6 max-w-md text-center text-sm leading-relaxed text-ink/70 md:text-base">
+        <p
+          {...reveal("up", 300)}
+          className="mx-auto mt-6 max-w-md text-center text-sm leading-relaxed text-ink/70 md:text-base"
+        >
           novidades, bastidores e os feedbacks de quem já usa VELLUTO.
         </p>
 
         <ul className="mt-10 grid grid-cols-3 gap-1.5 md:mt-14 md:grid-cols-6 md:gap-3">
-          {instagramPosts.map((post) => (
-            <li key={post.alt}>
+          {instagramPosts.map((post, index) => (
+            <li key={post.alt} {...reveal("zoom", 90 * index)}>
               <a
                 href={contact.instagramUrl}
                 {...external}
-                className="group relative block aspect-square overflow-hidden bg-cream"
+                className="hover-glint group relative block aspect-square overflow-hidden bg-cream"
               >
                 <Image
                   src={post.image}
@@ -39,7 +43,7 @@ export function InstagramFeed() {
           ))}
         </ul>
 
-        <div className="mt-10 flex justify-center md:mt-14">
+        <div {...reveal("up", 200)} className="mt-10 flex justify-center md:mt-14">
           <ButtonLink href={contact.instagramUrl} variant="outline-wine">
             <InstagramIcon className="size-4" />
             seguir {contact.instagramHandle}

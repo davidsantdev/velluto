@@ -1,11 +1,11 @@
 import type { StaticImageData } from "next/image";
 
-import chocolatinho from "@/assets/pecas/chocolatinho.jpg";
-import conjuntoDiana from "@/assets/pecas/conjunto-diana.jpg";
+import calcinhas from "@/assets/pecas/calcinhas.jpg";
 import conjuntoEleonor from "@/assets/pecas/conjunto-eleonor.jpg";
-import noiva from "@/assets/pecas/noiva.jpg";
-import pijamasCetim from "@/assets/pecas/pijamas-cetim.jpg";
-import pretinho from "@/assets/pecas/pretinho.jpg";
+import linhaNoiva from "@/assets/pecas/linha-noiva.jpg";
+import linhaPremium from "@/assets/pecas/linha-premium.jpg";
+import pijamas from "@/assets/pecas/pijamas.jpg";
+import sexshop from "@/assets/pecas/sexshop.jpg";
 import compraSimDeusa from "@/assets/instagram/compra-sim-deusa.jpg";
 import eleonorDetalhe from "@/assets/instagram/eleonor-detalhe.jpg";
 import facaAcontecer from "@/assets/instagram/faca-acontecer.jpg";
@@ -73,51 +73,54 @@ export type Piece = {
   badge?: string;
 };
 
+// A ordem alterna as cores das fotos para a grade não ficar repetitiva.
 export const pieces: Piece[] = [
   {
-    name: "Pijamas em cetim",
-    description: "cetim macio em vinho, chocolate e champanhe.",
-    image: pijamasCetim,
+    name: "Calcinhas",
+    description: "Modelos delicados e confortáveis, com detalhes que fazem toda a diferença.",
+    image: calcinhas,
+    alt: "Calcinhas preta, branca e vermelha com detalhe de pérolas e etiquetas VELLUTO, sobre pelúcia creme",
+    message: "Oi! Vi as calcinhas no site e quero saber mais 💗",
+  },
+  {
+    name: "Pijamas",
+    description:
+      "Peças que unem conforto, delicadeza e elegância para tornar suas noites ainda mais especiais.",
+    image: pijamas,
     alt: "Pijamas de cetim nas cores vinho, chocolate e champanhe com etiqueta VELLUTO, sobre pelúcia creme",
-    message: "Oi! Vi os pijamas em cetim no site e quero saber mais 💗",
+    message: "Oi! Vi os pijamas no site e quero saber mais 💗",
     badge: "novidade",
   },
   {
     name: "Linha noiva",
-    description: "tule bordado branco com coraçãozinho dourado.",
-    image: noiva,
-    alt: "Sutiã branco de tule bordado com flores e pingente de coração dourado, sobre pelúcia",
+    description: "A delicadeza e elegância dos conjuntos brancos.",
+    image: linhaNoiva,
+    alt: "Conjunto branco de renda e tule com laços de cetim e pingente de coração dourado, sobre pelúcia",
     message: "Oi! Vi a linha noiva no site e quero saber mais 🤍",
     badge: "bride era",
   },
   {
     name: "Conjunto Eleonor",
-    description: "tule bordado em rosé, com laços de cetim.",
+    description:
+      "Tule bordado delicado, disponível em cores encantadoras, com laços de cetim que completam cada detalhe.",
     image: conjuntoEleonor,
-    alt: "Conjunto Eleonor em tule bordado rosé com laços de cetim, sobre pelúcia",
+    alt: "Conjunto Eleonor em tule bordado nas cores vermelho, branco, preto, marrom e rosé, sobre pelúcia",
     message: "Oi! Vi o Conjunto Eleonor no site e quero saber mais 💗",
     badge: "novidade",
   },
   {
-    name: "Conjunto Diana",
-    description: "renda vermelha com lacinho no decote.",
-    image: conjuntoDiana,
-    alt: "Conjunto Diana em renda vermelha vestido em um busto de manequim",
-    message: "Oi! Vi o Conjunto Diana no site e quero saber mais ❤️",
+    name: "Linha premium",
+    description: "Peças sofisticadas, com acabamentos especiais e elegância em cada detalhe.",
+    image: linhaPremium,
+    alt: "Conjunto preto de renda com bojo de cetim vestido em um busto de manequim",
+    message: "Oi! Vi a linha premium no site e quero saber mais 🖤",
   },
   {
-    name: "Chocolatinho",
-    description: "bordado marrom bombom com laço de cetim.",
-    image: chocolatinho,
-    alt: "Conjunto marrom em tule bordado com laço de cetim, sobre pelúcia creme",
-    message: "Oi! Vi o chocolatinho no site e quero saber mais 🤎",
-  },
-  {
-    name: "Pretinho",
-    description: "tule bordado preto, o clássico que nunca erra.",
-    image: pretinho,
-    alt: "Conjunto preto em tule bordado com etiqueta VELLUTO, sobre pelúcia creme",
-    message: "Oi! Vi o pretinho no site e quero saber mais 🖤",
+    name: "Sexshop",
+    description: "Produtos íntimos para despertar novas sensações.",
+    image: sexshop,
+    alt: "Plugs de metal com pedras em formato de coração vermelha, rosa e roxa, sobre pelúcia creme",
+    message: "Oi! Vim pelo site e quero ver os produtos do sexshop 💗",
   },
 ];
 

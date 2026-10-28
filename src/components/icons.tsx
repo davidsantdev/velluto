@@ -70,12 +70,12 @@ function LineIcon({ className, children }: IconProps & { children: React.ReactNo
 export function BraIcon({ className }: IconProps) {
   return (
     <LineIcon className={className}>
-      <path d="M22 26l-2-14M42 26l2-14" />
-      <path d="M10 42c0-10 6-16 12-16 5 0 8 7 10 14" />
-      <path d="M54 42c0-10-6-16-12-16-5 0-8 7-10 14" />
-      <path d="M10 42c7 5 15 6.5 22 6.5S47 47 54 42" />
-      <path d="M32 40v8.5" />
-      <path d="M32 39.6c-1.6-1.9-3.8-2-3.8-.5s2.2 1.5 3.8.5zm0 0c1.6-1.9 3.8-2 3.8-.5s-2.2 1.5-3.8.5z" />
+      <path pathLength={1} d="M22 26l-2-14M42 26l2-14" />
+      <path pathLength={1} d="M10 42c0-10 6-16 12-16 5 0 8 7 10 14" />
+      <path pathLength={1} d="M54 42c0-10-6-16-12-16-5 0-8 7-10 14" />
+      <path pathLength={1} d="M10 42c7 5 15 6.5 22 6.5S47 47 54 42" />
+      <path pathLength={1} d="M32 40v8.5" />
+      <path pathLength={1} d="M32 39.6c-1.6-1.9-3.8-2-3.8-.5s2.2 1.5 3.8.5zm0 0c1.6-1.9 3.8-2 3.8-.5s-2.2 1.5-3.8.5z" />
     </LineIcon>
   );
 }
@@ -83,13 +83,13 @@ export function BraIcon({ className }: IconProps) {
 export function NightgownIcon({ className }: IconProps) {
   return (
     <LineIcon className={className}>
-      <path d="M24 7l1 13M40 7l-1 13" />
-      <path d="M25 20c3 6 11 6 14 0" />
-      <path d="M25 20c-1 5-2 9-3 13-1.5 8-4 16-7 24" />
-      <path d="M39 20c1 5 2 9 3 13 1.5 8 4 16 7 24" />
-      <path d="M22.4 33c6 2.4 13.2 2.4 19.2 0" />
-      <path d="M15 57c5.5 2.6 11.5 3 17 1.6 5.5 1.4 11.5 1 17-1.6" />
-      <path d="M30.2 26.4c1 1.2 2.6 1.2 3.6 0" />
+      <path pathLength={1} d="M24 7l1 13M40 7l-1 13" />
+      <path pathLength={1} d="M25 20c3 6 11 6 14 0" />
+      <path pathLength={1} d="M25 20c-1 5-2 9-3 13-1.5 8-4 16-7 24" />
+      <path pathLength={1} d="M39 20c1 5 2 9 3 13 1.5 8 4 16 7 24" />
+      <path pathLength={1} d="M22.4 33c6 2.4 13.2 2.4 19.2 0" />
+      <path pathLength={1} d="M15 57c5.5 2.6 11.5 3 17 1.6 5.5 1.4 11.5 1 17-1.6" />
+      <path pathLength={1} d="M30.2 26.4c1 1.2 2.6 1.2 3.6 0" />
     </LineIcon>
   );
 }
@@ -97,12 +97,12 @@ export function NightgownIcon({ className }: IconProps) {
 export function BikiniIcon({ className }: IconProps) {
   return (
     <LineIcon className={className}>
-      <path d="M22 11c-4 4-7.5 9.5-9 16 5.5 2 11 2 16 0-1-6.5-3.5-12-7-16z" />
-      <path d="M42 11c4 4 7.5 9.5 9 16-5.5 2-11 2-16 0 1-6.5 3.5-12 7-16z" />
-      <path d="M22 11l-2-7M42 11l2-7" />
-      <path d="M29 26.4c2 1.3 4 1.3 6 0M13 27l-6 2M51 27l6 2" />
-      <path d="M15 39c11 3.4 23 3.4 34 0-3 7-7.5 12.6-12.5 16.2-3 1.2-6 1.2-9 0C22.5 51.6 18 46 15 39z" />
-      <path d="M15 39l-5.5 2.2M49 39l5.5 2.2" />
+      <path pathLength={1} d="M22 11c-4 4-7.5 9.5-9 16 5.5 2 11 2 16 0-1-6.5-3.5-12-7-16z" />
+      <path pathLength={1} d="M42 11c4 4 7.5 9.5 9 16-5.5 2-11 2-16 0 1-6.5 3.5-12 7-16z" />
+      <path pathLength={1} d="M22 11l-2-7M42 11l2-7" />
+      <path pathLength={1} d="M29 26.4c2 1.3 4 1.3 6 0M13 27l-6 2M51 27l6 2" />
+      <path pathLength={1} d="M15 39c11 3.4 23 3.4 34 0-3 7-7.5 12.6-12.5 16.2-3 1.2-6 1.2-9 0C22.5 51.6 18 46 15 39z" />
+      <path pathLength={1} d="M15 39l-5.5 2.2M49 39l5.5 2.2" />
     </LineIcon>
   );
 }

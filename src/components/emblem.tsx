@@ -1,3 +1,6 @@
+import type { CSSProperties } from "react";
+
+import { cssVars } from "@/lib/motion";
 import { sparklePath, type Point } from "./ornaments";
 
 type Curve = [Point, Point, Point, Point];
@@ -119,13 +122,15 @@ const BLOOMS = FLOWERS.map(({ center, size, stemAngle }) => ({
 
 const TAILS = ["M60 156C60 160 59.6 163 59 166", "M60 156C60.6 159.5 61.5 162.5 63 165"];
 
-type EmblemProps = {
-  className?: string;
-  /** Quando informado, o emblema é anunciado por leitores de tela. */
-  title?: string;
-};
+// Moldura em arco como path (e não <rect>), começando no topo, para o traço se desenhar.
+const FRAME = "M60 2A58 58 0 0 1 118 60V140A58 58 0 0 1 2 140V60A58 58 0 0 1 60 2Z";
 
-export function Emblem({ className, title }: EmblemProps) {
+const circlePath = (r: number) => `M0 ${-r}A${r} ${r} 0 1 1 0 ${r}A${r} ${r} 0 1 1 0 ${-r}`;
+
+// Atraso de cada grupo no desenho: moldura, caules, folhas e por fim as flores.
+const delay = (seconds: number) => cssVars({ "--draw-delay": `${seconds}s` });
+
+function EmblemArt({ className, title }: { className: string; title?: string }) {
   return (
     <svg
       viewBox="0 0 120 200"
@@ -138,43 +143,70 @@ export function Emblem({ className, title }: EmblemProps) {
       aria-label={title}
       aria-hidden={title ? undefined : true}
     >
-      <rect x="2" y="2" width="116" height="196" rx="58" strokeWidth="1.1" />
+      <path d={FRAME} pathLength={1} strokeWidth="1.1" style={cssVars({ "--draw-period": "2.2s" })} />
       <g strokeWidth="0.85">
-        {STEMS.map((stem, i) => (
-          <path key={`stem-${i}`} d={curve(stem)} />
-        ))}
-        {TAILS.map((d) => (
-          <path key={d} d={d} />
-        ))}
-        {LEAVES.map((leafShape) => (
-          <path key={leafShape.transform} {...leafShape} />
-        ))}
-        {BUDS.map(({ branch, d, transform }) => (
-          <g key={transform}>
-            <path d={branch} />
-            <path d={d} transform={transform} />
-          </g>
-        ))}
-        {BLOOMS.map((bloom) => (
-          <g key={bloom.transform} transform={bloom.transform}>
-            {[0, 72, 144, 216, 288].map((turn) => (
-              <g key={turn} transform={`rotate(${turn})`}>
-                <path d={bloom.petal} />
-                <path d={bloom.vein} strokeWidth="0.5" />
-                <g transform="rotate(36)" strokeWidth="0.5">
-                  <path d={bloom.stamen} />
-                  <circle cx="0" {...bloom.anther} fill="currentColor" stroke="none" />
+        <g style={delay(0.3)}>
+          {STEMS.map((stem, i) => (
+            <path key={`stem-${i}`} d={curve(stem)} pathLength={1} />
+          ))}
+          {TAILS.map((d) => (
+            <path key={d} d={d} pathLength={1} />
+          ))}
+        </g>
+        <g style={delay(0.7)}>
+          {LEAVES.map((leafShape) => (
+            <path key={leafShape.transform} {...leafShape} pathLength={1} />
+          ))}
+          {BUDS.map(({ branch, d, transform }) => (
+            <g key={transform}>
+              <path d={branch} pathLength={1} />
+              <path d={d} transform={transform} pathLength={1} />
+            </g>
+          ))}
+        </g>
+        <g style={delay(0.9)}>
+          {BLOOMS.map((bloom) => (
+            <g key={bloom.transform} transform={bloom.transform}>
+              {[0, 72, 144, 216, 288].map((turn) => (
+                <g key={turn} transform={`rotate(${turn})`}>
+                  <path d={bloom.petal} pathLength={1} />
+                  <path d={bloom.vein} strokeWidth="0.5" pathLength={1} />
+                  <g transform="rotate(36)" strokeWidth="0.5">
+                    <path d={bloom.stamen} pathLength={1} />
+                    <circle cx="0" {...bloom.anther} fill="currentColor" stroke="none" className="draw-fill" />
+                  </g>
                 </g>
-              </g>
-            ))}
-            <circle r={bloom.heart} />
-          </g>
-        ))}
+              ))}
+              <path d={circlePath(bloom.heart)} pathLength={1} />
+            </g>
+          ))}
+        </g>
       </g>
-      <g fill="currentColor" stroke="none">
-        <path d={sparklePath([60, 26], 5.5)} />
-        <path d={sparklePath([60, 178], 5.5)} />
+      <g fill="currentColor" stroke="none" style={cssVars({ "--fill-delay": "1.9s" })}>
+        <path d={sparklePath([60, 26], 5.5)} className="draw-fill" />
+        <path d={sparklePath([60, 178], 5.5)} className="draw-fill" />
       </g>
     </svg>
+  );
+}
+
+type EmblemProps = {
+  /** Classes de tamanho e cor; a proporção 3:5 vem do próprio emblema. */
+  className?: string;
+  /** Quando informado, o emblema é anunciado por leitores de tela. */
+  title?: string;
+  /** O traço se desenha ao aparecer. */
+  draw?: boolean;
+  /** Um reflexo claro atravessa o dourado de tempos em tempos. */
+  shine?: boolean;
+  style?: CSSProperties;
+};
+
+export function Emblem({ className = "", title, draw = false, shine = false, style }: EmblemProps) {
+  return (
+    <span className={`relative block aspect-[3/5] ${className}`} style={style}>
+      <EmblemArt className={`size-full ${draw ? "draw" : ""}`} title={title} />
+      {shine && <EmblemArt className="glint absolute inset-0 size-full" />}
+    </span>
   );
 }
